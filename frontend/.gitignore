@@ -1,0 +1,15 @@
+# Build do Next.js
+.next/
+
+# Dependências do Node.js
+node_modules/
+
+# Logs e cache
+*.log
+.cache/
+
+# Arquivos temporários do Webpack
+*.hot-update.js
+
+# CSS gerado automaticamente
+styles/output.css

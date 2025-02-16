@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+.npm/
+
+# Build e transpilações
+dist/
+.turbo/
+.next/
+
+# Configurações do ambiente
+.env
+.env.local
+.DS_Store
+
+# Logs e cache
+*.log
+.cache/
+
+# Editor de código
+.vscode/
+.idea/

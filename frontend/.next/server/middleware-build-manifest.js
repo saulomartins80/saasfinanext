@@ -30,6 +30,11 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/configuracoes.js"
     ],
+    "/lancamento": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/lancamento.js"
+    ],
     "/metas": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

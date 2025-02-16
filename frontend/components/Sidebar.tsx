@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Home, TrendingUp, Target, Settings, Menu } from "lucide-react";
+import { Home, TrendingUp, Target, Settings, Menu, FilePlus } from "lucide-react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -34,6 +34,12 @@ export default function Sidebar() {
           <Link href="/metas" className="flex items-center space-x-3 w-full">
             <Target size={20} />
             <span className="hover:underline">Metas</span>
+          </Link>
+        </li>
+        <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-800 p-2 rounded ${isActive('/lancamento') ? 'bg-gray-700' : ''}`}>
+          <Link href="/lancamento" className="flex items-center space-x-3 w-full">
+            <FilePlus size={20} />
+            <span className="hover:underline">Lançamentos</span>
           </Link>
         </li>
         <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-800 p-2 rounded ${isActive('/configuracoes') ? 'bg-gray-700' : ''}`}>

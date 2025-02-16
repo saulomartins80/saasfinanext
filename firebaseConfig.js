@@ -1,14 +1,12 @@
-import { getAuth } from "firebase/auth";
-
-const auth = getAuth(app);
+import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAZWzRt6h3Za7ZG5_kDr-AXBdQbh4Mg9yg",
-  authDomain: "finup-saas-2025.firebaseapp.com",
-  projectId: "finup-saas-2025",
-  storageBucket: "finup-saas-2025.appspot.com",
-  messagingSenderId: "656351422904",
-  appId: "SEU_APP_ID",
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_DOMINIO.firebaseapp.com",
+  projectId: "SEU_PROJECT_ID",
+  storageBucket: "SEU_STORAGE_BUCKET",
+  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
+  appId: "SEU_APP_ID"
 };
 
 const app = initializeApp(firebaseConfig);

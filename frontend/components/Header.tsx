@@ -1,8 +1,10 @@
+import ThemeToggle from "../components/ThemeToggle";
+
 export default function Header() {
   return (
-    <header className="bg-white shadow p-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold">Dashboard</h1>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded">Sair</button>
+    <header className="flex justify-between p-4 bg-white dark:bg-gray-900">
+      <h1 className="text-xl font-bold text-gray-900 dark:text-white">Finanext</h1>
+      <ThemeToggle />
     </header>
   );
 }

@@ -7,17 +7,28 @@ import Transactions from "../components/Transactions";
 
 export default function Dashboard() {
   return (
-    <div className="flex h-screen text-red-500">
+    <div className="flex h-screen bg-gray-900 text-white">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="flex-1 flex flex-col">
+
+      {/* Conteúdo principal */}
+      <div className="flex-1 flex flex-col overflow-y-auto">
+        {/* Header */}
         <Header />
+
+        {/* Grid de componentes */}
         <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Overview />
           <Goals />
           <FinanceCharts />
         </div>
+
+        {/* Transações */}
         <Transactions />
       </div>
     </div>
   );
 }
+
+
+
