@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const TransactionSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
-  type: { type: String, enum: ["income", "expense"], required: true },
+  description: { type: String, required: true },
   amount: { type: Number, required: true },
-  description: { type: String },
-  createdAt: { type: Date, default: Date.now },
+  type: { type: String, enum: ['income', 'expense'], required: true },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
-export const Transaction = mongoose.model("Transaction", TransactionSchema);
+// Exportação nomeada
+export const Transaction = mongoose.model('Transaction', TransactionSchema);
