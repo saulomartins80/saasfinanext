@@ -1,11 +1,21 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
-const TransactionSchema = new mongoose.Schema({
-  description: { type: String, required: true },
-  amount: { type: Number, required: true },
-  type: { type: String, enum: ['income', 'expense'], required: true },
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+export interface ITransaction extends Document {
+  descricao: string;
+  valor: number;
+  tipo: 'receita' | 'despesa' | 'transferencia';
+  data: Date;
+  categoria: string;
+}
+
+const transactionSchema: Schema = new Schema({
+  descricao: { type: String, required: true },
+  valor: { type: Number, required: true },
+  tipo: { type: String, enum: ['receita', 'despesa', 'transferencia'], required: true },
+  data: { type: Date, default: Date.now },
+  categoria: { type: String, required: true },
 });
 
-// Exportação nomeada
-export const Transaction = mongoose.model('Transaction', TransactionSchema);
+const Transaction = mongoose.model<ITransaction>('Transaction', transactionSchema);
+
+export default Transaction; // Exportação padrão

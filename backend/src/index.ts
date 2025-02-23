@@ -1,12 +1,13 @@
-import express from 'express';
-import cors from 'cors';
-import connectDB from './config/db';
-import balanceRoutes from './routes/balanceRoutes';
-import transactionRoutes from './routes/transactionRoutes';
-import goalRoutes from './routes/goalRoutes';
-import userRoutes from './routes/userRoutes';
+import express from "express";
+import cors from "cors";
+import connectDB from "./config/db";
+import balanceRoutes from "./routes/balanceRoutes";
+import transactionRoutes from "./routes/transactionRoutes";
+import goalsRoutes from "./routes/goalsRoutes";
+import userRoutes from "./routes/userRoutes";
+import lancamentoRoutes from "./routes/lancamentos"; // Nova rota
 
-import 'dotenv/config';
+import "dotenv/config";
 
 const app = express();
 
@@ -15,10 +16,11 @@ app.use(express.json());
 
 connectDB();
 
-app.use('/api', balanceRoutes);       // Agora `/api/balance` funciona
-app.use('/api', transactionRoutes);   // Agora `/api/transactions` funciona
-app.use('/api', goalRoutes);          // Agora `/api/goals` funciona
-app.use('/api', userRoutes);          // Agora `/api/login` funciona
+app.use("/api", balanceRoutes);
+app.use("/api", transactionRoutes);
+app.use("/api", goalsRoutes);
+app.use("/api", userRoutes);
+app.use("/api", lancamentoRoutes); // Adicionada a rota de lançamentos
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Servidor rodando na porta ${PORT}`));
+app.listen(PORT, () => console.log(` ~@ Servidor rodando na porta ${PORT}`));

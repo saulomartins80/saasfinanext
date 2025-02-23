@@ -25,20 +25,15 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/configuracoes": [
+    "/ebook": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/configuracoes.js"
+      "static/chunks/pages/ebook.js"
     ],
-    "/lancamento": [
+    "/transacoes": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/lancamento.js"
-    ],
-    "/metas": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/metas.js"
+      "static/chunks/pages/transacoes.js"
     ]
   },
   "ampFirstPages": []

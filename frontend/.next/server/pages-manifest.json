@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/lancamento": "pages/lancamento.js",
   "/": "pages/index.js",
-  "/metas": "pages/metas.js",
-  "/configuracoes": "pages/configuracoes.js"
+  "/ebook": "pages/ebook.js",
+  "/transacoes": "pages/transacoes.js"
 }

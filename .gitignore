@@ -16,3 +16,6 @@ styles/output.css
 
 # Arquivo de configuração do Vercel
 .vercel
+
+# Arquivo grande que estava impedindo o push
+frontend/node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node

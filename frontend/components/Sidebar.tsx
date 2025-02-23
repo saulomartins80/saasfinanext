@@ -1,54 +1,116 @@
 import Link from "next/link";
-import { Home, TrendingUp, Target, Settings, Menu, FilePlus } from "lucide-react";
+import { Home, TrendingUp, Target, Book, PlusSquare, X } from "lucide-react"; // Importação do ícone X
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(true);
 
   const isActive = (path: string) => router.pathname === path;
 
   return (
-    <div className={`w-64 bg-gray-900 text-white h-full flex flex-col p-5 ${isOpen ? "block" : "hidden"} md:block`}>
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold mb-6">Finanext</h2>
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          <Menu size={24} />
-        </button>
+    <>
+      {/* Sidebar para desktop (sempre visível) */}
+      <div className="hidden md:flex md:relative w-64 bg-white dark:bg-gray-800 text-gray-900 dark:text-white h-full flex-col p-5 shadow-lg z-40">
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-bold mb-6">Finanext</h2>
+        </div>
+        <ul className="space-y-4">
+          <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+            <Link href="/" className="flex items-center space-x-3 w-full">
+              <Home size={20} className={isActive('/') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+              <span>Visão geral</span>
+            </Link>
+          </li>
+          <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/transacoes') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+            <Link href="/transacoes" className="flex items-center space-x-3 w-full">
+              <TrendingUp size={20} className={isActive('/transacoes') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+              <span>Transações</span>
+            </Link>
+          </li>
+          <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/metas') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+            <Link href="/metas" className="flex items-center space-x-3 w-full">
+              <Target size={20} className={isActive('/metas') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+              <span>Metas</span>
+            </Link>
+          </li>
+          <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/lancamento') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+            <Link href="/lancamento" className="flex items-center space-x-3 w-full">
+              <PlusSquare size={20} className={isActive('/lancamento') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+              <span>Lançamentos</span>
+            </Link>
+          </li>
+          <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/ebook') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+            <Link href="/ebook" className="flex items-center space-x-3 w-full">
+              <Book size={20} className={isActive('/ebook') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+              <span>E-book</span>
+            </Link>
+          </li>
+        </ul>
       </div>
-      <ul className="space-y-4">
-        <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-800 p-2 rounded ${isActive('/') ? 'bg-gray-700' : ''}`}>
-          <Link href="/" className="flex items-center space-x-3 w-full">
-            <Home size={20} />
-            <span className="hover:underline">Dashboard</span>
-          </Link>
-        </li>
-        <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-800 p-2 rounded ${isActive('/transacoes') ? 'bg-gray-700' : ''}`}>
-          <Link href="/transacoes" className="flex items-center space-x-3 w-full">
-            <TrendingUp size={20} />
-            <span className="hover:underline">Transações</span>
-          </Link>
-        </li>
-        <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-800 p-2 rounded ${isActive('/metas') ? 'bg-gray-700' : ''}`}>
-          <Link href="/metas" className="flex items-center space-x-3 w-full">
-            <Target size={20} />
-            <span className="hover:underline">Metas</span>
-          </Link>
-        </li>
-        <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-800 p-2 rounded ${isActive('/lancamento') ? 'bg-gray-700' : ''}`}>
-          <Link href="/lancamento" className="flex items-center space-x-3 w-full">
-            <FilePlus size={20} />
-            <span className="hover:underline">Lançamentos</span>
-          </Link>
-        </li>
-        <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-800 p-2 rounded ${isActive('/configuracoes') ? 'bg-gray-700' : ''}`}>
-          <Link href="/configuracoes" className="flex items-center space-x-3 w-full">
-            <Settings size={20} />
-            <span className="hover:underline">Configurações</span>
-          </Link>
-        </li>
-      </ul>
-    </div>
+
+      {/* Sidebar para mobile (controlável) */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            exit={{ x: -300 }}
+            transition={{ type: "spring", stiffness: 100 }}
+            className="fixed md:hidden w-64 bg-white dark:bg-gray-800 text-gray-900 dark:text-white h-full flex flex-col p-5 shadow-lg z-40"
+          >
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold mb-6">Finanext</h2>
+              <button
+                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+                onClick={onClose}
+              >
+                <X size={24} className="text-gray-900 dark:text-white" /> {/* Ícone X */}
+              </button>
+            </div>
+            <ul className="space-y-4">
+              <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+                <Link href="/" className="flex items-center space-x-3 w-full" onClick={onClose}>
+                  <Home size={20} className={isActive('/') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+                  <span>Visão geral</span>
+                </Link>
+              </li>
+              <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/transacoes') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+                <Link href="/transacoes" className="flex items-center space-x-3 w-full" onClick={onClose}>
+                  <TrendingUp size={20} className={isActive('/transacoes') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+                  <span>Transações</span>
+                </Link>
+              </li>
+              <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/metas') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+                <Link href="/metas" className="flex items-center space-x-3 w-full" onClick={onClose}>
+                  <Target size={20} className={isActive('/metas') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+                  <span>Metas</span>
+                </Link>
+              </li>
+              <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/lancamento') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+                <Link href="/lancamento" className="flex items-center space-x-3 w-full" onClick={onClose}>
+                  <PlusSquare size={20} className={isActive('/lancamento') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+                  <span>Lançamentos</span>
+                </Link>
+              </li>
+              <li className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded ${isActive('/ebook') ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : ''}`}>
+                <Link href="/ebook" className="flex items-center space-x-3 w-full" onClick={onClose}>
+                  <Book size={20} className={isActive('/ebook') ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-white'} />
+                  <span>E-book</span>
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Overlay para fechar o sidebar no mobile */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 md:hidden z-30"
+          onClick={onClose}
+        ></div>
+      )}
+    </>
   );
 }

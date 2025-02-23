@@ -1,18 +1,18 @@
-import { Router } from "express";
-import { loginUser } from "../services/authService";
+import express, { Request, Response } from 'express';
+import { loginUser } from '../services/authService';
 
-const router = Router();
+const router = express.Router();
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
     const user = await loginUser(email, password);
-    res.json({ user });
+    res.status(200).json({ user });
   } catch (error) {
     if (error instanceof Error) {
-      res.status(401).json({ error: error.message });
+      res.status(400).json({ error: error.message });
     } else {
-      res.status(401).json({ error: "Erro desconhecido" });
+      res.status(400).json({ error: 'Erro desconhecido' });
     }
   }
 });

@@ -1,19 +1,19 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import { Sun, Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function ThemeToggle() {
-  const themeContext = useContext(ThemeContext);
-  if (!themeContext) return null;
+  const { theme, toggleTheme } = useTheme(); // Use toggleTheme, não setTheme
 
   return (
     <button
-      onClick={themeContext.toggleTheme}
-      className="p-2 rounded bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white"
-      aria-label="Alternar Tema"
+      onClick={toggleTheme} // Chame toggleTheme diretamente
+      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
     >
-      {themeContext.theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+      {theme === "dark" ? (
+        <Sun size={24} className="text-gray-900 dark:text-white" />
+      ) : (
+        <Moon size={24} className="text-gray-900 dark:text-white" />
+      )}
     </button>
   );
 }
-

@@ -1,8 +1,17 @@
 import express from 'express';
-import { getTransactions } from '../controllers/transactionController';
+import {
+  getTransactions,
+  getSaldo,
+  getReceitas,
+  getDespesas,
+} from '../controllers/transactionController';
 
 const router = express.Router();
 
-router.get('/transactions', getTransactions);
+// Rotas
+router.get('/transactions', getTransactions); // Busca todas as transações
+router.get('/saldo', getSaldo); // Busca o saldo
+router.get('/receitas', getReceitas); // Busca o total de receitas
+router.get('/despesas', getDespesas); // Busca o total de despesas
 
 export default router;
