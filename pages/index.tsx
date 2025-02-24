@@ -40,7 +40,7 @@ export default function Dashboard() {
     setIsSidebarOpen(false);
   };
 
-  const userName = "Saulo Martins"; // Substitua pelo nome do usuário dinâmico
+  const userName = "Sirley C. Martins"; // Substitua pelo nome do usuário dinâmico
 
   // Dados para o gráfico de barras
   const barChartData = {
