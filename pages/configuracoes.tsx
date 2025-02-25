@@ -1,34 +1,28 @@
-import { useState } from "react";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
+import { Menu } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import Notifications from "./Notifications";
+import ProfileMenu from "./ProfileMenu";
 
-export default function Configuracoes() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-  };
-
+export default function Header({ toggleSidebar }: { toggleSidebar: () => void }) {
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+    <header className="fixed top-0 left-0 right-0 h-16 flex justify-between items-center p-4 bg-white dark:bg-gray-800 shadow-md z-20">
+      {/* Botão para abrir/fechar o sidebar (apenas no mobile) */}
+      <button
+        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition md:hidden"
+        onClick={toggleSidebar}
+      >
+        <Menu size={24} className="text-gray-900 dark:text-white" />
+      </button>
 
-      {/* Conteúdo principal */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
-        <Header toggleSidebar={toggleSidebar} />
+      {/* Título do Header */}
+      <h1 className="text-xl font-bold text-gray-900 dark:text-white">Finanext</h1>
 
-        {/* Conteúdo da página */}
-        <div className="p-6">
-          <h1 className="text-2xl font-bold">Configurações</h1>
-          {/* Adicione conteúdo específico da página de configurações aqui */}
-        </div>
+      {/* Ícones de Ação */}
+      <div className="flex items-center space-x-4">
+        <Notifications />
+        <ProfileMenu />
+        <ThemeToggle />
       </div>
-    </div>
+    </header>
   );
 }
