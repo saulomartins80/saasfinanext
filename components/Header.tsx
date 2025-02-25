@@ -6,7 +6,7 @@ import ProfileMenu from "./ProfileMenu";
 export default function Header({ toggleSidebar }: { toggleSidebar: () => void }) {
   return (
     <header className="fixed top-0 left-0 right-0 h-16 flex justify-between items-center p-4 bg-white dark:bg-gray-800 shadow-md z-20">
-      {/* Botão para abrir/fechar o sidebar (mobile) */}
+      {/* Botão para abrir/fechar o sidebar (apenas no mobile) */}
       <button
         className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition md:hidden"
         onClick={toggleSidebar}
