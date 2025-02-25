@@ -1,5 +1,6 @@
 # Build do Next.js
 .next/
+out/
 
 # Dependências do Node.js
 node_modules/
@@ -18,8 +19,9 @@ styles/output.css
 .vercel
 
 # Arquivos de ambiente
-.env*.local
 .env
+.env.local
+.env*.local
 
 # Diretórios de desenvolvimento
 dist/
@@ -69,3 +71,8 @@ pnpm-debug.log
 
 # Ignorar a pasta .next/ do frontend
 frontend/.next/
+
+# Ignorar todos os arquivos .js, exceto os de configuração
+*.js
+!postcss.config.js
+!tailwind.config.js

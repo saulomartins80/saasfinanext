@@ -1,6 +1,9 @@
 # Build do Next.js
 .next/
+<<<<<<< HEAD
 out/
+=======
+>>>>>>> aa7aa05043fdcdedfe696f8995341d2008ed4ca7
 
 # Dependências do Node.js
 node_modules/
@@ -19,13 +22,22 @@ styles/output.css
 .vercel
 
 # Arquivos de ambiente
+<<<<<<< HEAD
 .env
 .env.local
 .env*.local
+=======
+.env*.local
+.env
+>>>>>>> aa7aa05043fdcdedfe696f8995341d2008ed4ca7
 
 # Diretórios de desenvolvimento
 dist/
 build/
+<<<<<<< HEAD
+=======
+out/
+>>>>>>> aa7aa05043fdcdedfe696f8995341d2008ed4ca7
 
 # Arquivos de IDE/Editor
 .idea/
@@ -67,8 +79,11 @@ pnpm-debug.log
 
 # Exceção para o arquivo grande no node_modules
 !frontend/node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node
+<<<<<<< HEAD
 
 # Ignorar todos os arquivos .js, exceto os de configuração
 *.js
 !postcss.config.js
 !tailwind.config.js
+=======
+>>>>>>> aa7aa05043fdcdedfe696f8995341d2008ed4ca7
