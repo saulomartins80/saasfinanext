@@ -47,6 +47,17 @@ const EbookPage = () => {
   const [fontSize, setFontSize] = useState(16);
   const [isClient, setIsClient] = useState(false); // Verifica se está no cliente
 
+  // Estado para controlar o sidebar
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   // Verifica se está no navegador
   useEffect(() => {
     setIsClient(true);
@@ -102,9 +113,15 @@ const EbookPage = () => {
 
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
-      <Sidebar />
+      {/* Sidebar */}
+      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+
+      {/* Conteúdo principal */}
       <div className="flex-1 flex flex-col overflow-y-auto">
-        <Header />
+        {/* Header */}
+        <Header toggleSidebar={toggleSidebar} />
+
+        {/* Conteúdo da página */}
         <div className="p-6">
           {/* Capa do E-book */}
           <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center">

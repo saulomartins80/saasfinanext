@@ -17,5 +17,55 @@ styles/output.css
 # Arquivo de configuração do Vercel
 .vercel
 
-# Arquivo grande que estava impedindo o push
-frontend/node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node
+# Arquivos de ambiente
+.env*.local
+.env
+
+# Diretórios de desenvolvimento
+dist/
+build/
+out/
+
+# Arquivos de IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de depuração
+*.pid
+*.seed
+*.pid.lock
+
+# Arquivos de configuração local
+*.local
+
+# Arquivos de teste
+coverage/
+*.lcov
+
+# Arquivos de pacote
+*.tgz
+
+# Arquivos de lock
+package-lock.json
+yarn.lock
+
+# Arquivos do Lerna
+lerna-debug.log
+
+# Arquivos do pnpm
+pnpm-debug.log
+
+# Arquivos do Turbo
+.turbo/
+
+# Exceção para o arquivo grande no node_modules
+!frontend/node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node
+
+# Ignorar a pasta .next/ do frontend
+frontend/.next/
