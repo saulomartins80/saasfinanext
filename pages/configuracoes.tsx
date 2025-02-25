@@ -5,6 +5,26 @@ import Header from "../components/Header";
 export default function Configuracoes() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Define o estado inicial do Sidebar (aberto no desktop, fechado no mobile)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) { // 768px é o breakpoint para desktop (md)
+        setIsSidebarOpen(true); // Abre o Sidebar no desktop
+      } else {
+        setIsSidebarOpen(false); // Fecha o Sidebar no mobile
+      }
+    };
+
+    // Verifica o tamanho da tela ao carregar a página
+    handleResize();
+
+    // Atualiza o estado ao redimensionar a tela
+    window.addEventListener("resize", handleResize);
+
+    // Remove o listener ao desmontar o componente
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };

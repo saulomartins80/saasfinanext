@@ -11,7 +11,6 @@ interface SidebarProps {
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const router = useRouter();
 
-  // Verifica se a rota atual corresponde ao link
   const isActive = (path: string) => router.pathname === path;
 
   return (
@@ -25,9 +24,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold mb-6">Finanext</h2>
-          {/* Botão para fechar o sidebar no desktop */}
+          {/* Botão para fechar o sidebar (apenas no mobile) */}
           <button
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition md:block hidden"
+            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition md:hidden"
             onClick={onClose}
           >
             <X size={24} className="text-gray-900 dark:text-white" />
