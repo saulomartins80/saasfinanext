@@ -5,7 +5,7 @@ import Header from "../components/Header";
 export default function Configuracoes() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Define o estado inicial do Sidebar (aberto no desktop, fechado no mobile)
+  // Define o estado inicial do Sidebar (fechado no mobile, aberto no desktop)
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) { // 768px é o breakpoint para desktop (md)
