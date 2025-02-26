@@ -75,4 +75,4 @@ frontend/.next/
 # Ignorar todos os arquivos .js, exceto os de configuração
 *.js
 !postcss.config.js
-!tailwind.config.js
+!tailwind.config.jsbackend/src/config/firebaseServiceAccount.json
